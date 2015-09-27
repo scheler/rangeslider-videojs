@@ -514,7 +514,7 @@
      * @param {Object=} options
      * @constructor
      */
-    var videojsRSTimeBar = videojs.extends(videojsComponent, {
+    var videojsRSTimeBar = videojs.extend(videojsComponent, {
         /** @constructor */
         constructor: function (player, options) {
             videojsComponent.call(this, player, options);
@@ -546,7 +546,7 @@
      * @param {Object=} options
      * @constructor
      */
-    var videojsSeekRSBar = videojs.extends(videojsComponent, {
+    var videojsSeekRSBar = videojs.extend(videojsComponent, {
         /** @constructor */
         constructor: function (player, options) {
             videojsComponent.call(this, player, options);
@@ -736,7 +736,7 @@
      * @param {Object=} options
      * @constructor
      */
-    var videojsSelectionBar = videojs.extends(videojsComponent, {
+    var videojsSelectionBar = videojs.extend(videojsComponent, {
         /** @constructor */
         constructor: function (player, options) {
             videojsComponent.call(this, player, options);
@@ -849,7 +849,7 @@
      * @param {Object=} options
      * @constructor
      */
-    var videojsSelectionBarLeft = videojs.extends(videojsComponent, {
+    var videojsSelectionBarLeft = videojs.extend(videojsComponent, {
         /** @constructor */
         constructor: function (player, options) {
             videojsComponent.call(this, player, options);
@@ -896,7 +896,7 @@
      * @param {Object=} options
      * @constructor
      */
-    var videojsSelectionBarRight = videojs.extends(videojsComponent, {
+    var videojsSelectionBarRight = videojs.extend(videojsComponent, {
         /** @constructor */
         constructor: function (player, options) {
             videojsComponent.call(this, player, options);
@@ -943,7 +943,7 @@
      * @param {Object=} options
      * @constructor
      */
-    var videojsTimePanel = videojs.extends(videojsComponent, {
+    var videojsTimePanel = videojs.extend(videojsComponent, {
         /** @constructor */
         constructor: function (player, options) {
             videojsComponent.call(this, player, options);
@@ -975,7 +975,7 @@
      * @param {Object=} options
      * @constructor
      */
-    var videojsTimePanelLeft = videojs.extends(videojsComponent, {
+    var videojsTimePanelLeft = videojs.extend(videojsComponent, {
         /** @constructor */
         constructor: function (player, options) {
             videojsComponent.call(this, player, options);
@@ -1002,7 +1002,7 @@
      * @param {Object=} options
      * @constructor
      */
-    var videojsTimePanelRight = videojs.extends(videojsComponent, {
+    var videojsTimePanelRight = videojs.extend(videojsComponent, {
         /** @constructor */
         constructor: function (player, options) {
             videojsComponent.call(this, player, options);
@@ -1028,7 +1028,7 @@
      * @param {Object=} options
      * @constructor
      */
-    var videojsControlTimePanel = videojs.extends(videojsComponent, {
+    var videojsControlTimePanel = videojs.extend(videojsComponent, {
         /** @constructor */
         constructor: function (player, options) {
             videojsComponent.call(this, player, options);
@@ -1071,7 +1071,7 @@
      * @param {Object=} options
      * @constructor
      */
-    var videojsControlTimePanelLeft = videojs.extends(videojsComponent, {
+    var videojsControlTimePanelLeft = videojs.extend(videojsComponent, {
         /** @constructor */
         constructor: function (player, options) {
             videojsComponent.call(this, player, options);
@@ -1111,7 +1111,7 @@
      * @param {Object=} options
      * @constructor
      */
-    var videojsControlTimePanelRight = videojs.extends(videojsComponent, {
+    var videojsControlTimePanelRight = videojs.extend(videojsComponent, {
         /** @constructor */
         constructor: function (player, options) {
             videojsComponent.call(this, player, options);
