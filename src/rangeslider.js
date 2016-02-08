@@ -497,7 +497,7 @@
 
 //--Charge the new Component into videojs
     var videojsSeekBar = videojs.getComponent('SeekBar');
-    videojsSeekBar.prototype.options_.children.RSTimeBar = {}; //Range Slider Time Bar
+    videojsSeekBar.prototype.options_.children.push('RSTimeBar'); //Range Slider Time Bar
 
     var videojsControlBar = videojs.getComponent('ControlBar');
     videojsControlBar.prototype.options_.children.push('ControlTimePanel'); //Panel with the time of the range slider
