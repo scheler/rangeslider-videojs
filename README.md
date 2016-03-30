@@ -1,6 +1,6 @@
 IMPORTANT!
 ==================
-This plugin will no longer be maintained. Welcome those who want to continue the project.
+This is a Fork from a plugin, but the plugin is no longer maintained.
 
 Rangeslider-videojs
 ==================
