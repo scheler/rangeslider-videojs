@@ -12,7 +12,7 @@ rangeslider.js is a plugin for Video JS player. The aim of this plugin is to cre
 
 There is a demo of the range slider plugin in the next webpage:
 
-http://danielcebrian.com/rangeslider/demo.html
+[http://acpmasquerade.github.io/rangeslider-videojs/demo/index.html](http://acpmasquerade.github.io/rangeslider-videojs/demo/index.html)
 
 ##Installation
 
