@@ -1,6 +1,6 @@
 IMPORTANT!
 ==================
-RangeSlider port for Videojs version 5x.
+RangeSlider port for Videojs version 5.x.
 
 Rangeslider-videojs
 ==================
@@ -8,8 +8,10 @@ Rangeslider-videojs
 
 rangeslider.js is a plugin for Video JS player. The aim of this plugin is to create range slider to select a region of a video in video-js.
 
-##Live-Demo (Working for VideoJs 5x)
-[http://acpmasquerade.github.io/rangeslider-videojs/demo/index.html](http://acpmasquerade.github.io/rangeslider-videojs/demo/index.html)
+##Live-Demo (Working for VideoJs 5.x)
+<a href="http://acpmasquerade.github.io/rangeslider-videojs/demo/index.html" target="_blank">
+    http://acpmasquerade.github.io/rangeslider-videojs/demo/index.html
+</a>
 
 ##Installation
 
@@ -19,12 +21,12 @@ videojs:
 ```html
 <html>
 	<head>
-		<!--Latest VideoJS-->
-		<link href="http://vjs.zencdn.net/4.1/video-js.css" rel="stylesheet">
-		<script src="lib/video.min.js"></script>
-		<!--RangeSlider Pluging-->
-		<script src="src/rangeslider.js"></script>
-		<link href="src/rangeslider.css" rel="stylesheet">
+		<!--Latest VideoJS (5.x) -->
+		<link rel='stylesheet' type='text/css' href='http://vjs.zencdn.net/5.8.7/video-js.css' >
+		<script src='http://vjs.zencdn.net/5.8.7/video.js'></script>
+		<!--RangeSlider Plugin-->
+		<script src='src/rangeslider.js'></script>
+		<link rel='stylesheet' type='text/css' href='src/rangeslider.css'>
 	</head>
 	<body>
 		...
@@ -38,9 +40,9 @@ Load a video in video-js, as you can see in the [tutorial of video-js player](ht
 <video id="vid1" class="video-js vjs-default-skin" controls preload="none" width="640" height="264"
 poster="http://video-js.zencoder.com/oceans-clip.png"
 data-setup=''>
-	<source src="http://video-js.zencoder.com/oceans-clip.mp4" type='video/mp4' />
-	<source src="http://video-js.zencoder.com/oceans-clip.webm" type='video/webm' />
-	<source src="http://video-js.zencoder.com/oceans-clip.ogv" type='video/ogg' />
+	<source src="my-video.mp4" type='video/mp4' />
+	<source src="my-video.webm" type='video/webm' />
+	<source src="my-video.ogv" type='video/ogg' />
 </video>
 ```
 	
