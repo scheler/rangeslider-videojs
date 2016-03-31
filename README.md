@@ -1,6 +1,6 @@
 IMPORTANT!
 ==================
-This is a Fork from a plugin, but the plugin is no longer maintained.
+RangeSlider port for Videojs version 5x.
 
 Rangeslider-videojs
 ==================
@@ -8,10 +8,7 @@ Rangeslider-videojs
 
 rangeslider.js is a plugin for Video JS player. The aim of this plugin is to create range slider to select a region of a video in video-js.
 
-##Live-Demo
-
-There is a demo of the range slider plugin in the next webpage:
-
+##Live-Demo (Working for VideoJs 5x)
 [http://acpmasquerade.github.io/rangeslider-videojs/demo/index.html](http://acpmasquerade.github.io/rangeslider-videojs/demo/index.html)
 
 ##Installation
