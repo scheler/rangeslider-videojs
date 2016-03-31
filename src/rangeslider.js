@@ -35,27 +35,27 @@
  limitations under the License.
  */
 //----------------Load Plugin----------------//
-(function () {
-    var videojsOn = function (element, eventName, func, flag) {
-        element.addEventListener(eventName, func, flag);
-    };
-    var videojsOff = function (element, eventName, func, flag) {
-        element.removeEventListener(eventName, func, flag);
-    };
-    var videojsAddClass = function (element, className) {
-        element.classList.add(className);
-    };
-    var videojsRemoveClass = function (element, className) {
-        element.classList.remove(className);
-    };
-    var videojsFindPosition = function (element) {
-        return element.getBoundingClientRect();
-    };
 
-    var videojsRound = function (n, precision) {
+_vjs4 = {
+    on : function (element, eventName, func, flag) {
+        element.addEventListener(eventName, func, flag);
+    },
+    off : function (element, eventName, func, flag) {
+        element.removeEventListener(eventName, func, flag);
+    },
+    addClass : function (element, className) {
+        element.classList.add(className);
+    },
+    removeClass : function (element, className) {
+        element.classList.remove(className);
+    },
+    findPosition : function (element) {
+        return element.getBoundingClientRect();
+    },
+    round : function (n, precision) {
         return parseFloat(n.toFixed(precision));
-    };
-    var videojsFormatTime = function (totalSeconds) {
+    },
+    formatTime : function (totalSeconds) {
         var minutes = Math.floor(totalSeconds / 60).toFixed(0);
         var seconds = (totalSeconds % 60).toFixed(0);
 
@@ -64,11 +64,13 @@
         }
 
         return minutes + ':' + seconds;
-    };
-    var videojsBlockTextSelection = function () {
+    },
+    blockTextSelection : function () {
         // TODO
-    };
+    }
+};
 
+(function () {
 //-- Load RangeSlider plugin in videojs
     function RangeSlider_(options) {
         var player = this;
@@ -193,13 +195,13 @@
             this.options.locked = true;
             this.ctp.enable(false);
             if (typeof this.box != 'undefined')
-                videojsAddClass(this.box.el_, 'locked');
+                _vjs4.addClass(this.box.el_, 'locked');
         },
         unlock: function () {
             this.options.locked = false;
             this.ctp.enable();
             if (typeof this.box != 'undefined')
-                videojsRemoveClass(this.box.el_, 'locked');
+                _vjs4.removeClass(this.box.el_, 'locked');
         },
         show: function () {
             this.options.hidden = false;
@@ -219,12 +221,12 @@
         showPanel: function () {
             this.options.panel = true;
             if (typeof this.tp != 'undefined')
-                videojsRemoveClass(this.tp.el_, 'disable');
+                _vjs4.removeClass(this.tp.el_, 'disable');
         },
         hidePanel: function () {
             this.options.panel = false;
             if (typeof this.tp != 'undefined')
-                videojsAddClass(this.tp.el_, 'disable');
+                _vjs4.addClass(this.tp.el_, 'disable');
         },
         showcontrolTime: function () {
             this.options.controlTime = true;
@@ -313,7 +315,7 @@
             if (percentage == "")
                 percentage = index === 0 ? 0 : 100;
 
-            return videojsRound(this._seconds(percentage / 100), this.updatePrecision - 1);
+            return _vjs4.round(this._seconds(percentage / 100), this.updatePrecision - 1);
         },
         _percent: function (seconds) {
             var duration = this.player.duration();
@@ -576,17 +578,17 @@
 
     videojsSeekRSBar.prototype.onMouseDown = function (event) {
         event.preventDefault();
-        videojsBlockTextSelection();
+        _vjs4.blockTextSelection();
 
         if (!this.rs.options.locked) {
-            videojsOn(document, "mousemove", videojs.bind(this, this.onMouseMove));
-            videojsOn(document, "mouseup", videojs.bind(this, this.onMouseUp));
+            _vjs4.on(document, "mousemove", videojs.bind(this, this.onMouseMove));
+            _vjs4.on(document, "mouseup", videojs.bind(this, this.onMouseUp));
         }
     };
 
     videojsSeekRSBar.prototype.onMouseUp = function (event) {
-        videojsOff(document, "mousemove", this.onMouseMove, false);
-        videojsOff(document, "mouseup", this.onMouseUp, false);
+        _vjs4.off(document, "mousemove", this.onMouseMove, false);
+        _vjs4.off(document, "mouseup", this.onMouseUp, false);
     };
 
     videojsSeekRSBar.prototype.onMouseMove = function (event) {
@@ -599,7 +601,7 @@
 
         //Fix a problem with the presition in the display time
         var ctd = this.player_.controlBar.currentTimeDisplay;
-        ctd.contentEl_.innerHTML = '<span class="vjs-control-text">' + ctd.localize('Current Time') + '</span>' + videojsFormatTime(this.rs._seconds(left), this.player_.duration());
+        ctd.contentEl_.innerHTML = '<span class="vjs-control-text">' + ctd.localize('Current Time') + '</span>' + _vjs4.formatTime(this.rs._seconds(left), this.player_.duration());
 
         // Trigger slider change
         if (this.rs.left.pressed || this.rs.right.pressed) {
@@ -650,7 +652,7 @@
             }
 
             //-- Panel
-            var TimeText = videojsFormatTime(this.rs._seconds(left)),
+            var TimeText = _vjs4.formatTime(this.rs._seconds(left)),
                     tplTextLegth = tpl.children[0].innerHTML.length;
             var MaxP, MinP, MaxDisP;
             if (tplTextLegth <= 4) //0:00
@@ -721,7 +723,7 @@
         return this.el_.offsetWidth;
     };
     videojsSeekRSBar.prototype.getRSTBX = function () {
-        return videojsFindPosition(this.el_).left;
+        return _vjs4.findPosition(this.el_).left;
     };
     videojsSeekRSBar.prototype.getWidth = function () {
         return this.rs.left.el_.offsetWidth;//does not matter left or right
@@ -760,8 +762,8 @@
                 end = this.rs.right.el_.style.left.replace("%", ""),
                 duration = this.player_.duration(),
                 precision = this.rs.updatePrecision,
-                segStart = videojsRound(start * duration / 100, precision),
-                segEnd = videojsRound(end * duration / 100, precision);
+                segStart = _vjs4.round(start * duration / 100, precision),
+                segEnd = _vjs4.round(end * duration / 100, precision);
         this.player_.currentTime(segStart);
         this.player_.play();
         this.rs.bar.activatePlay(segStart, segEnd);
@@ -771,7 +773,7 @@
         var rightVal = this.rs.right.el_.style.left != '' ? this.rs.right.el_.style.left : 100;
         var right = parseFloat(rightVal) / 100;
 
-        var width = videojsRound((right - left), this.rs.updatePrecision); //round necessary for not get 0.6e-7 for example that it's not able for the html css width
+        var width = _vjs4.round((right - left), this.rs.updatePrecision); //round necessary for not get 0.6e-7 for example that it's not able for the html css width
 
         //(right+0.00001) is to fix the precision of the css in html
         if (left <= (right + 0.00001)) {
@@ -786,7 +788,7 @@
         var leftVal = this.rs.left.el_.style.left != '' ? this.rs.left.el_.style.left : 0;
         var left = parseFloat(leftVal) / 100;
 
-        var width = videojsRound((right - left), this.rs.updatePrecision);//round necessary for not get 0.6e-7 for example that it's not able for the html css width
+        var width = _vjs4.round((right - left), this.rs.updatePrecision);//round necessary for not get 0.6e-7 for example that it's not able for the html css width
 
         //(right+0.00001) is to fix the precision of the css in html
         if ((right + 0.00001) >= left) {
@@ -871,17 +873,17 @@
 
     videojsSelectionBarLeft.prototype.onMouseDown = function (event) {
         event.preventDefault();
-        videojsBlockTextSelection();
+        _vjs4.blockTextSelection();
         if (!this.rs.options.locked) {
             this.pressed = true;
-            videojsOn(document, "mouseup", videojs.bind(this, this.onMouseUp));
-            videojsAddClass(this.el_, 'active');
+            _vjs4.on(document, "mouseup", videojs.bind(this, this.onMouseUp));
+            _vjs4.addClass(this.el_, 'active');
         }
     };
 
     videojsSelectionBarLeft.prototype.onMouseUp = function (event) {
-        videojsOff(document, "mouseup", this.onMouseUp, false);
-        videojsRemoveClass(this.el_, 'active');
+        _vjs4.off(document, "mouseup", this.onMouseUp, false);
+        _vjs4.removeClass(this.el_, 'active');
         if (!this.rs.options.locked) {
             this.pressed = false;
         }
@@ -919,17 +921,17 @@
 
     videojsSelectionBarRight.prototype.onMouseDown = function (event) {
         event.preventDefault();
-        videojsBlockTextSelection();
+        _vjs4.blockTextSelection();
         if (!this.rs.options.locked) {
             this.pressed = true;
-            videojsOn(document, "mouseup", videojs.bind(this, this.onMouseUp));
-            videojsAddClass(this.el_, 'active');
+            _vjs4.on(document, "mouseup", videojs.bind(this, this.onMouseUp));
+            _vjs4.addClass(this.el_, 'active');
         }
     };
 
     videojsSelectionBarRight.prototype.onMouseUp = function (event) {
-        videojsOff(document, "mouseup", this.onMouseUp, false);
-        videojsRemoveClass(this.el_, 'active');
+        _vjs4.off(document, "mouseup", this.onMouseUp, false);
+        _vjs4.removeClass(this.el_, 'active');
         if (!this.rs.options.locked) {
             this.pressed = false;
         }
