@@ -72,20 +72,28 @@ _vjs4 = {
 
 (function () {
     function getYoutubeError(error_int){
-        var _langErrors = {
+        var _langUnknownError = "Unknown Error";
+        var _langErrors = [
             // invalid-params
-            2: 'The request contains an invalid parameter value. For example, this error occurs if you specify a video ID that does not have 11 characters, or if the video ID contains invalid characters, such as exclamation points or asterisks.',
+            [2, 'The request contains an invalid parameter value. For example, this error occurs if you specify a video ID that does not have 11 characters, or if the video ID contains invalid characters, such as exclamation points or asterisks.'],
             // html5-error
-            5: 'The requested content cannot be played in an HTML5 player or another error related to the HTML5 player has occurred.',
+            [5, 'The requested content cannot be played in an HTML5 player or another error related to the HTML5 player has occurred.'],
             // video not found
-            100: 'The video requested was not found. This error occurs when a video has been removed (for any reason) or has been marked as private.',
+            [100, 'The video requested was not found. This error occurs when a video has been removed (for any reason) or has been marked as private.'],
             // embed not allowed
-            101: 'The owner of the requested video does not allow it to be played in embedded players.',
+            [101, 'The owner of the requested video does not allow it to be played in embedded players.'],
             // embed not allowed
-            150: 'The owner of the requested video does not allow it to be played in embedded players.'
-        };
+            [150, 'The owner of the requested video does not allow it to be played in embedded players.']
+        ];
 
-        return _langErrors[error_int] === undefined ? "Unknown Error" : _langErrors[error_int];
+        var error = _langUnknownError;
+        for(var i = 0; i < _langErrors.length; i++){
+            if (_langErrors[i][0] == error_int){
+                error = _langErrors[i][1];
+                break;
+            }
+        }
+        return error;
     }
 
 //-- Load RangeSlider plugin in videojs
@@ -429,9 +437,6 @@ _vjs4 = {
 //-- Public Functions added to video-js
 
     var videojsPlayer = videojs.getComponent('Player');
-
-    // Add compatibility functions
-    videojsPlayer.prototype._v4 = _vjs4;
 
 //Lock the Slider bar and it will not be possible to change the arrow positions
     videojsPlayer.prototype.lockSlider = function () {
